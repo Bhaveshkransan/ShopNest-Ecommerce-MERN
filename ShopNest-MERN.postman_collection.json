@@ -1,0 +1,664 @@
+{
+  "info": {
+    "_postman_id": "99288713-268b-4402-8593-780e3fd1133c",
+    "name": "ShopNest-MERN",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56221329",
+    "_collection_link": "https://go.postman.co/collection/56221329-99288713-268b-4402-8593-780e3fd1133c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AUTH",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Bhavesh\",\r\n    \"email\": \"bhaveshg1357@gmail.com\",\r\n    \"password\": \"pass@1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}} /api/auth/register",
+              "host": [
+                "{{endpoint}} "
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Bhavesh\",\r\n    \"email\": \"bhaveshg1357@gmail.com\",\r\n    \"password\": \"pass@1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}} /api/auth/register",
+              "host": [
+                "{{endpoint}} "
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ADMIN --GET ALL USERS",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Bhavesh\",\r\n    \"email\": \"bhaveshg1357@gmail.com\",\r\n    \"password\": \"pass@1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}} /api/auth/register",
+              "host": [
+                "{{endpoint}} "
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get ONe Products",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Admin --POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "type": "text",
+                  "key": "name",
+                  "value": "Wireless Headphones"
+                },
+                {
+                  "type": "text",
+                  "key": "description",
+                  "value": "Premium Bluetooth headphones with noise cancellation"
+                },
+                {
+                  "type": "text",
+                  "key": "price",
+                  "value": "2999"
+                },
+                {
+                  "type": "text",
+                  "key": "category",
+                  "value": "Electronics"
+                },
+                {
+                  "type": "text",
+                  "key": "stock",
+                  "value": "25"
+                },
+                {
+                  "type": "file",
+                  "key": "image",
+                  "src": "C:/Users/Bhavesh/Pictures/product.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{endpoint}}/api/products/",
+              "host": [
+                "{{endpoint}}"
+              ],
+              "path": [
+                "api",
+                "products",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"{{endpoint}}/api/products/\" \\\r\n  --header \"Authorization: Bearer {{token}}\" \\\r\n  --form \"name=Wireless Headphones\" \\\r\n  --form \"description=Premium Bluetooth headphones with noise cancellation\" \\\r\n  --form \"price=2999\" \\\r\n  --form \"category=Electronics\" \\\r\n  --form \"stock=25\" \\\r\n  --form \"image=@C:/Users/Bhavesh/Pictures/product.jpg\""
+          },
+          "response": []
+        },
+        {
+          "name": "Admin --Edit One Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ADMIN_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "type": "text",
+                  "value": "Updated Wireless Headphones"
+                },
+                {
+                  "key": "price",
+                  "type": "text",
+                  "value": "4599"
+                },
+                {
+                  "key": "category",
+                  "type": "text",
+                  "value": "Electronics"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "C:/Users/Bhavesh/Pictures/product.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/products/6a4381752e070e3584cf18fc",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "6a4381752e070e3584cf18fc"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request PUT \"http://127.0.0.1:5000/api/products/PRODUCT_ID_HERE\" \\\r\n  --header \"Authorization: Bearer YOUR_ADMIN_TOKEN_HERE\" \\\r\n  --form \"name=Updated Wireless Headphones\" \\\r\n  --form \"description=Updated premium Bluetooth headphones\" \\\r\n  --form \"price=3499\" \\\r\n  --form \"category=Electronics\" \\\r\n  --form \"stock=40\" \\\r\n  --form \"image=@C:/Users/Bhavesh/Pictures/product.png\""
+          },
+          "response": []
+        },
+        {
+          "name": "Admin --Delete One Product Copy",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_ADMIN_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "type": "text",
+                  "value": "Updated Wireless Headphones"
+                },
+                {
+                  "key": "price",
+                  "type": "text",
+                  "value": "4599"
+                },
+                {
+                  "key": "category",
+                  "type": "text",
+                  "value": "Electronics"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "C:/Users/Bhavesh/Pictures/product.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/products/6a4381752e070e3584cf18fc",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "6a4381752e070e3584cf18fc"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request PUT \"http://127.0.0.1:5000/api/products/PRODUCT_ID_HERE\" \\\r\n  --header \"Authorization: Bearer YOUR_ADMIN_TOKEN_HERE\" \\\r\n  --form \"name=Updated Wireless Headphones\" \\\r\n  --form \"description=Updated premium Bluetooth headphones\" \\\r\n  --form \"price=3499\" \\\r\n  --form \"category=Electronics\" \\\r\n  --form \"stock=40\" \\\r\n  --form \"image=@C:/Users/Bhavesh/Pictures/product.png\""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "place a order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_USER_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/orders/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"http://127.0.0.1:5000/api/orders/\" \\\r\n  --header \"Content-Type: application/json\" \\\r\n  --header \"Authorization: Bearer YOUR_USER_TOKEN_HERE\" \\\r\n  --data-raw '{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "Admin ALL order get",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_USER_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/orders/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"http://127.0.0.1:5000/api/orders/\" \\\r\n  --header \"Content-Type: application/json\" \\\r\n  --header \"Authorization: Bearer YOUR_USER_TOKEN_HERE\" \\\r\n  --data-raw '{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_USER_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/orders/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"http://127.0.0.1:5000/api/orders/\" \\\r\n  --header \"Content-Type: application/json\" \\\r\n  --header \"Authorization: Bearer YOUR_USER_TOKEN_HERE\" \\\r\n  --data-raw '{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "get my orders",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_USER_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/orders/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"http://127.0.0.1:5000/api/orders/\" \\\r\n  --header \"Content-Type: application/json\" \\\r\n  --header \"Authorization: Bearer YOUR_USER_TOKEN_HERE\" \\\r\n  --data-raw '{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin Analytics",
+      "item": [
+        {
+          "name": "Analyctics",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_secret_1axs}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_USER_TOKEN_HERE"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/api/orders/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders",
+                ""
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST \"http://127.0.0.1:5000/api/orders/\" \\\r\n  --header \"Content-Type: application/json\" \\\r\n  --header \"Authorization: Bearer YOUR_USER_TOKEN_HERE\" \\\r\n  --data-raw '{\r\n    \"orderItems\": [\r\n      {\r\n        \"product\": \"PRODUCT_ID_HERE\",\r\n        \"quantity\": 2,\r\n        \"price\": 2999\r\n      }\r\n    ],\r\n    \"paymentMethod\": \"COD\",\r\n    \"totalAmount\": 5998,\r\n    \"address\": {\r\n      \"fullName\": \"Bhavesh Gangurde\",\r\n      \"street\": \"Your Street\",\r\n      \"city\": \"Mumbai\",\r\n      \"state\": \"Maharashtra\",\r\n      \"postalCode\": \"400001\",\r\n      \"country\": \"India\"\r\n    }\r\n  }'"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "endpoint",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_1axs",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_1axs",
+      "secret": true
+    }
+  ]
+}
