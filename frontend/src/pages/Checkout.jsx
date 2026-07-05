@@ -1,51 +1,53 @@
-import React, { useSelector, useContext, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { AuthCountext } from '../context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 import { clearCart } from '../redux/cartSlice';
 import '../styles/checkout.css';
 
 const Checkout = () => {
-    const { user } = useContext(AuthCountext);
+    const { user } = useContext(AuthContext);
     const cartItems = useSelector((state) => state.cart.cartItems);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [address, setAddress] = useState({
-        fullName: '', street: '', city: '', postalCode: '', country: ''
+        fullName: '', street: '', city: '', state: '', postalCode: '', country: ''
     });
 
-    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.qty, 0);
+    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const handlePayment = async () => {
 
         try {
-            const orderRes = await fetch('/api/payment/order', {
+            const orderRes = await fetch('/api/payments/order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ amount: totalPrice })
             });
-            const orderData = await orderRes.json()
             if (!orderRes.ok) {
                 const fallback = window.confirm("Razorpay keys unconfigured on backend. Use student bypass Mode to place test order?");
                 if (fallback) {
-                    return bypassStatement();
+                    return bypassPayment();
                 }
                 else {
-                    return alert("Payment falied to initilaize");
+                    return alert("Payment failed to initialize");
                 }
             }
 
+            const orderData = await orderRes.json()
+
             const options = {
-                key: 'rzp_testdummy123',
-                amount: 'orderData.amount',
-                currency: 'orderData.currency',
+                key: orderData.key_id || 'rzp_testdummy123',
+                amount: orderData.order.amount,
+                currency: orderData.order.currency,
                 name: 'Shopnest',
                 description: 'Test transaction',
-                order_id: 'orderData.id',
+                order_id: orderData.order.id,
                 handler: async function (response) {
-                    const verifyRes = await fetch('/api/payment/verify', {
+                    const verifyRes = await fetch('/api/payments/verify-payment', {
                         method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(response)
                     });
                     if (verifyRes.ok) {
@@ -56,17 +58,23 @@ const Checkout = () => {
                                 'Authorization': `Bearer ${user.token}`
                             },
                             body: JSON.stringify({
-                                items: cartItems,
+                                orderItems: cartItems.map(item => ({
+                                    product: item._id,
+                                    quantity: item.quantity,
+                                    price: item.price
+                                })),
                                 totalAmount: totalPrice,
                                 address,
+                                paymentMethod: 'Razorpay',
                                 paymentId: response.razorpay_payment_id
                             })
                         })
+                        const saveOrderData = await saveOrderRes.json();
                         if (saveOrderRes.ok) {
                             dispatch(clearCart());
-                            navigate('/orderSuccess');
+                            navigate('/orderSuccess', { state: { orderId: saveOrderData.order?._id, totalAmount: totalPrice } });
                         } else {
-                            alert('Order saving failed');
+                            alert(saveOrderData.message || 'Order saving failed');
                         }
                     }
                     else {
@@ -95,17 +103,23 @@ const Checkout = () => {
                 'Authorization': `Bearer ${user.token}`
             },
             body: JSON.stringify({
-                items: cartItems,
+                orderItems: cartItems.map(item => ({
+                    product: item._id,
+                    quantity: item.quantity,
+                    price: item.price
+                })),
                 totalAmount: totalPrice,
                 address,
+                paymentMethod: 'Bypass',
                 paymentId: 'bypass_txn_' + Date.now()
             })
         });
+        const saveOrderData = await saveOrderRes.json();
         if (saveOrderRes.ok) {
             dispatch(clearCart());
-            navigate('/orderSuccess');
+            navigate('/orderSuccess', { state: { orderId: saveOrderData.order?._id, totalAmount: totalPrice } });
         } else {
-            alert('Order saving failed');
+            alert(saveOrderData.message || 'Order saving failed');
         }
     };
     const handleSubmit = (e) => {
@@ -115,7 +129,7 @@ const Checkout = () => {
             navigate('/login');
             return;
         }
-        if (!address.fullName || !address.street || !address.city || !address.postalCode || !address.country) {
+        if (!address.fullName || !address.street || !address.city || !address.state || !address.postalCode || !address.country) {
             alert("Please fill in all address fields");
             return;
         }
@@ -143,10 +157,10 @@ const Checkout = () => {
                                     <div key={item._id} className="summary-item">
                                         <div className="item-details">
                                             <p className="item-name">{item.name}</p>
-                                            <p className="item-qty">Qty: {item.qty}</p>
+                                            <p className="item-qty">Qty: {item.quantity}</p>
                                         </div>
                                         <div className="item-price">
-                                            ₹{(item.price * item.qty).toFixed(2)}
+                                            ₹{(item.price * item.quantity).toFixed(2)}
                                         </div>
                                     </div>
                                 ))}
@@ -206,6 +220,21 @@ const Checkout = () => {
                             </div>
 
                             <div className="form-group">
+                                <label htmlFor="state">State *</label>
+                                <input
+                                    type="text"
+                                    id="state"
+                                    name="state"
+                                    value={address.state}
+                                    onChange={handleAddressChange}
+                                    placeholder="Enter state"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-row">
+                            <div className="form-group">
                                 <label htmlFor="postalCode">Postal Code *</label>
                                 <input
                                     type="text"
@@ -217,19 +246,19 @@ const Checkout = () => {
                                     required
                                 />
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                            <label htmlFor="country">Country *</label>
-                            <input
-                                type="text"
-                                id="country"
-                                name="country"
-                                value={address.country}
-                                onChange={handleAddressChange}
-                                placeholder="Enter country"
-                                required
-                            />
+                            <div className="form-group">
+                                <label htmlFor="country">Country *</label>
+                                <input
+                                    type="text"
+                                    id="country"
+                                    name="country"
+                                    value={address.country}
+                                    onChange={handleAddressChange}
+                                    placeholder="Enter country"
+                                    required
+                                />
+                            </div>
                         </div>
 
                         <button type="submit" className="checkout-btn">

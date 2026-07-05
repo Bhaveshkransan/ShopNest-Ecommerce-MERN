@@ -1,0 +1,253 @@
+.order-success-container {
+  min-height: calc(100vh - 180px); /* Adjust based on navbar/footer height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+.success-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 50px 40px;
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.03);
+  animation: cardFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* SVG Checkmark Animation */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 3;
+  stroke: #10b981;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #10b981;
+  animation: fillCircle .4s ease-in-out .4s forwards, scaleUp .3s ease-in-out .9s both;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  stroke: #10b981;
+  fill: none;
+  animation: strokeCircle .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke: #fff;
+  animation: strokeCheck .3s cubic-bezier(0.65, 0, 0.45, 1) .7s forwards;
+}
+
+.success-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 15px;
+  letter-spacing: -0.01em;
+}
+
+.success-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.success-details-card {
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 35px;
+  text-align: left;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.details-row:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.details-row:first-of-type {
+  padding-top: 0;
+}
+
+.details-label {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.details-value {
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.order-id-value {
+  font-family: 'Courier New', Courier, monospace;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.total-amount-value {
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.status-badge {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.email-notification-notice {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.email-icon {
+  font-style: normal;
+  font-size: 16px;
+  color: #3b82f6;
+  line-height: 1;
+}
+
+/* Actions Styles */
+.success-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-continue-shopping {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-continue-shopping:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+}
+
+.btn-continue-shopping:active {
+  transform: translateY(0);
+}
+
+/* Keyframe Animations */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes strokeCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillCircle {
+  to {
+    box-shadow: inset 0px 0px 0px 40px #10b981;
+  }
+}
+
+@keyframes scaleUp {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .success-card {
+    padding: 35px 20px;
+  }
+  
+  .success-title {
+    font-size: 24px;
+  }
+  
+  .success-subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  
+  .success-details-card {
+    padding: 16px;
+  }
+  
+  .details-row {
+    font-size: 13px;
+  }
+  
+  .total-amount-value {
+    font-size: 16px;
+  }
+}

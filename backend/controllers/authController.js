@@ -25,9 +25,13 @@ const registerUser = async (req, res) => {
 
         const user = await User.create({ name, email, password: hashedPassword });
         if (user) {
-            const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
-            const message = `Welcome to ShopNest! ${name}. Your OTP for ShopNest registration is: ${otp}`;
-            await sendEmail(email, "Welcome to ShopNest", message);
+            try {
+                const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+                const message = `Welcome to ShopNest! ${name}. Your OTP for ShopNest registration is: ${otp}`;
+                await sendEmail(email, "Welcome to ShopNest", message);
+            } catch (emailErr) {
+                console.error("Failed to send welcome email:", emailErr.message);
+            }
             res.status(201).json({
             _id: user._id,
             name: user.name,

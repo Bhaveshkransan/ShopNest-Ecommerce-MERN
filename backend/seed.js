@@ -53,7 +53,7 @@ const seed = async () => {
       price: 19.99,
       category: "Clothing",
       stock: 120,
-      imageUrl: "https://via.placeholder.com/300x300.png?text=Classic+T-Shirt",
+      imageUrl: "/images/tshirt.png",
     },
     {
       name: "Wireless Headphones",
@@ -61,7 +61,7 @@ const seed = async () => {
       price: 89.99,
       category: "Electronics",
       stock: 45,
-      imageUrl: "https://via.placeholder.com/300x300.png?text=Wireless+Headphones",
+      imageUrl: "/images/headphones.png",
     },
     {
       name: "Coffee Mug",
@@ -69,7 +69,47 @@ const seed = async () => {
       price: 12.5,
       category: "Home",
       stock: 80,
-      imageUrl: "https://via.placeholder.com/300x300.png?text=Coffee+Mug",
+      imageUrl: "/images/mug.png",
+    },
+    {
+      name: "Minimalist Leather Watch",
+      description: "Sleek wristwatch with a genuine leather strap.",
+      price: 119.99,
+      category: "Accessories",
+      stock: 30,
+      imageUrl: "/images/watch.png",
+    },
+    {
+      name: "Smart Fitness Tracker",
+      description: "Track steps, heart rate, and sleep with high accuracy.",
+      price: 49.99,
+      category: "Electronics",
+      stock: 50,
+      imageUrl: "/images/tracker.png",
+    },
+    {
+      name: "Ergonomic Office Chair",
+      description: "High back support with adjustable mesh seating.",
+      price: 189.99,
+      category: "Office",
+      stock: 15,
+      imageUrl: "/images/chair.png",
+    },
+    {
+      name: "Stainless Steel Water Bottle",
+      description: "Double-walled vacuum insulated bottle for hot/cold drinks.",
+      price: 24.99,
+      category: "Home",
+      stock: 100,
+      imageUrl: "/images/bottle.png",
+    },
+    {
+      name: "Premium Leather Wallet",
+      description: "Handcrafted bi-fold leather wallet with multiple slots.",
+      price: 39.99,
+      category: "Accessories",
+      stock: 60,
+      imageUrl: "/images/wallet.png",
     },
   ];
 
@@ -83,15 +123,13 @@ const seed = async () => {
     console.log("Users already exist. Skipping user seed.");
   }
 
-  const existingProducts = await Product.find({ name: { $in: productsData.map((item) => item.name) } });
-  const productsToInsert = productsData.filter((item) => !existingProducts.some((product) => product.name === item.name));
+  // Clear existing products and orders to ensure clean links and up-to-date image paths
+  await Product.deleteMany({});
+  await Order.deleteMany({});
+  console.log("Cleared existing products and orders.");
 
-  if (productsToInsert.length > 0) {
-    await Product.insertMany(productsToInsert);
-    console.log(`Inserted ${productsToInsert.length} products.`);
-  } else {
-    console.log("Products already exist. Skipping product seed.");
-  }
+  await Product.insertMany(productsData);
+  console.log(`Successfully seeded ${productsData.length} products.`);
 
   const allUsers = await User.find({ email: { $in: usersData.map((item) => item.email) } });
   const allProducts = await Product.find({ name: { $in: productsData.map((item) => item.name) } });

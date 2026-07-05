@@ -20,8 +20,12 @@ const createOrder = async (req, res) => {
             await order.save();
             const shippingAddress = `${address.street}, ${address.city}, ${address.state}, ${address.postalCode}, ${address.country}`;
             const message = `Your order has been placed successfully. Order ID: ${order._id}. Total Amount: ${totalAmount}. Payment Method: ${paymentMethod} and Payment ID: ${order.paymentId}. Shipping Address: ${shippingAddress}. Thank you for shopping with us!`;
-            await sendEmail(req.user.email, "Order Confirmation", message);
-            res.status(201).json({ message: "Order created successfully" });
+            try {
+                await sendEmail(req.user.email, "Order Confirmation", message);
+            } catch (emailErr) {
+                console.error("Order confirmation email failed to send:", emailErr.message);
+            }
+            res.status(201).json({ message: "Order created successfully", order });
         }
     } catch (error) {
         console.error(error);

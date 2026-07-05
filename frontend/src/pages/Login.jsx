@@ -6,7 +6,6 @@ import '../styles/auth.css'
 const Login = () => {
     const { login } = useContext(AuthContext)
 
-    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -17,14 +16,13 @@ const Login = () => {
 
         try {
             const response = await fetch(
-                'http://localhost:5000/api/auth/login',
+                '/api/auth/login',
                 {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        name,
                         email,
                         password,
                     }),
@@ -51,17 +49,11 @@ const Login = () => {
 
                 <form className="auth-form" onSubmit={handleSubmit}>
                     <input
-                        type="text"
-                        placeholder="Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-
-                    <input
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
 
                     <input
@@ -69,6 +61,7 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
 
                     <button className="auth-btn" type="submit">

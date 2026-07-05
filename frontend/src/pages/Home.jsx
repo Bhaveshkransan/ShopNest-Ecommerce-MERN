@@ -10,7 +10,7 @@ const Home = () => {
             try {
                 const response = await fetch("/api/products");
                 const data = await response.json();
-                setProducts(data.slice(0, 4)); 
+                setProducts(data); 
             } catch (error) {
                 console.error("Error fetching products:", error);
             }

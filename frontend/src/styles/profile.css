@@ -1,0 +1,365 @@
+.profile-container {
+  min-height: calc(100vh - 180px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 30px;
+}
+
+/* User Card Styles */
+.user-profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  animation: profileFadeIn 0.5s ease-out;
+}
+
+.user-avatar-large {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.user-profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.user-profile-email {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.user-meta-info {
+  width: 100%;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.user-role-badge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+/* Orders History Styles */
+.profile-orders-section {
+  animation: profileFadeIn 0.6s ease-out;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-loading {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.profile-error-alert {
+  padding: 16px;
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Empty State */
+.no-orders-box {
+  background: white;
+  border-radius: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.no-orders-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.no-orders-box h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.no-orders-box p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.btn-shop-now {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-shop-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+}
+
+/* Orders List */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-order-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: transform 0.2s ease;
+}
+
+.profile-order-card:hover {
+  transform: translateY(-2px);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.order-id-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-right: 6px;
+}
+
+.order-id-code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.status-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pill.delivered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-pill.processing, .status-pill.pending {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-pill.shipped {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-pill.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.order-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.meta-label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.meta-value {
+  font-size: 14px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.meta-value.total-amount {
+  color: #10b981;
+  font-size: 15px;
+}
+
+/* Order Items */
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.profile-order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.item-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f1f5f9;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.item-qty-price {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+.item-total-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* Shipping summary */
+.order-shipping-summary {
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shipping-title {
+  color: #6b7280;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.shipping-address {
+  color: #475569;
+}
+
+/* Keyframes */
+@keyframes profileFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .profile-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .user-profile-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .order-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
