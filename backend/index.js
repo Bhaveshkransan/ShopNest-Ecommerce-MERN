@@ -22,6 +22,7 @@ app.use('/api/products', require("./routes/productRoutes"));
 app.use('/api/orders', require("./routes/orderRoutes"));
 app.use('/api/payments', require("./routes/paymentRoutes"));
 app.use('/api/analytics', require("./routes/analyticsRoutes"));
+app.use('/api/ai', require("./routes/aiRoutes"));
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));

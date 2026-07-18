@@ -17,6 +17,7 @@ const AddProduct = () => {
   });
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
 
   // Authenticate admin access
   useEffect(() => {
@@ -78,6 +79,33 @@ const AddProduct = () => {
       alert("Something went wrong while submitting product.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGenerateDescription = async () => {
+    if (!formData.name) {
+      alert("Please enter a product name first.");
+      return;
+    }
+    setAiLoading(true);
+    try {
+      const res = await fetch("/api/ai/generate-description", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productName: formData.name,
+          category: formData.category,
+          price: formData.price,
+        }),
+      });
+      const data = await res.json();
+      if (data.description) {
+        setFormData((prev) => ({ ...prev, description: data.description }));
+      }
+    } catch (err) {
+      alert("AI generation failed. Please try again.");
+    } finally {
+      setAiLoading(false);
     }
   };
 
@@ -181,14 +209,35 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description *</label>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
+                <label htmlFor="description" style={{ margin: 0 }}>Description *</label>
+                <button
+                  type="button"
+                  onClick={handleGenerateDescription}
+                  disabled={aiLoading}
+                  style={{
+                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "20px",
+                    padding: "6px 14px",
+                    fontSize: "12px",
+                    cursor: aiLoading ? "not-allowed" : "pointer",
+                    fontWeight: "600",
+                    opacity: aiLoading ? 0.7 : 1,
+                    transition: "all 0.2s",
+                  }}
+                >
+                  {aiLoading ? "⏳ Generating..." : "✨ Generate with AI"}
+                </button>
+              </div>
               <textarea
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
                 required
-                placeholder="Write detailed product descriptions here..."
+                placeholder="Write a description or click ✨ Generate with AI above..."
               ></textarea>
             </div>
 

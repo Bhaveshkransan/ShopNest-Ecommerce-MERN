@@ -17,6 +17,7 @@ import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
 import AdminOrders from "./admin/AdminOrders";
 import AdminUsers from "./admin/AdminUsers";
+import AIChatbot from "./components/AIChatbot";
 import "./styles/global.css";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />
+      <AIChatbot />
     </Router>
   );
 }
