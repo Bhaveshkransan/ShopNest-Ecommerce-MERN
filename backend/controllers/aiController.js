@@ -19,7 +19,7 @@ const chat = async (req, res) => {
     conversationText += `Customer: ${message}\nShopBot:`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: conversationText,
     });
 
@@ -45,7 +45,7 @@ Requirements: 2-3 sentences, highlight key benefits, persuasive and professional
 Write only the description, nothing else.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
 
@@ -67,7 +67,7 @@ const analyzeSentiment = async (req, res) => {
 Review: "${review}"`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
     });
 
