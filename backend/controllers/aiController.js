@@ -26,7 +26,7 @@ const chat = async (req, res) => {
     res.json({ reply: response.text.trim() });
   } catch (err) {
     console.error("AI Chat error:", err.message);
-    res.status(500).json({ error: "AI service unavailable. Please try again later." });
+    res.status(500).json({ error: "API Error: " + err.message });
   }
 };
 
