@@ -6,7 +6,7 @@ const AIChatbot = () => {
   const [messages, setMessages] = useState([
     {
       role: "model",
-      content: "👋 Hi! I'm ShopBot, your AI shopping assistant. How can I help you today?",
+      content: "👋 Hi! I'm ShopBot. I can help you find products, answer questions, or assist with your order. How can I help today?",
     },
   ]);
   const [input, setInput] = useState("");
