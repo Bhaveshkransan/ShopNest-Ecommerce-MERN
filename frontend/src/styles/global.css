@@ -1,5 +1,5 @@
 /* Global reset and base styles */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
 
 * {
   box-sizing: border-box;
@@ -87,24 +87,23 @@ button {
 }
 
 .hero-banner h1 {
-  font-size: 3.8rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: 700;
   margin-bottom: 20px;
-  letter-spacing: -0.03em;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
   position: relative;
   z-index: 1;
 }
 
 .home-container h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 30px;
+  color: #0f172a;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
 }
 
 .products-grid {

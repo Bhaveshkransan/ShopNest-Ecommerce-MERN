@@ -50,11 +50,11 @@ const Navbar = () => {
 
                     <span
                         style={{
-                            fontSize: "32px",
-                            fontWeight: "700",
-                            background: "linear-gradient(90deg,#4f7df3,#d946ef)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
+                            fontSize: "34px",
+                            fontWeight: "800",
+                            color: "#0f172a",
+                            fontFamily: "'Playfair Display', serif",
+                            letterSpacing: "-0.02em"
                         }}
                     >
                         Shopnest
