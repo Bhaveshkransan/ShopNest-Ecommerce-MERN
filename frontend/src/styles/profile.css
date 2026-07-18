@@ -1,7 +1,7 @@
 .profile-container {
   min-height: calc(100vh - 180px);
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  background: #0f172a;
   font-family: 'Inter', sans-serif;
 }
 
@@ -32,7 +32,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: #0f172a;
   color: white;
   font-size: 36px;
   font-weight: 700;
@@ -135,7 +135,7 @@
 
 .btn-shop-now {
   padding: 12px 28px;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: #0f172a;
   color: white;
   border: none;
   border-radius: 8px;

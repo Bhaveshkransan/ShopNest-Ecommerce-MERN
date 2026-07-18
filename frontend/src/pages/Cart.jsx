@@ -51,7 +51,7 @@ const Cart = () => {
           style={{
             marginTop: 20,
             padding: "12px 25px",
-            background: "linear-gradient(90deg,#4f7df3,#d946ef)",
+            background: "#0f172a",
             color: "#fff",
             border: "none",
             borderRadius: 10,
@@ -208,7 +208,7 @@ const Cart = () => {
           onClick={() => navigate("/checkout")}
           style={{
             padding: "12px 25px",
-            background: "linear-gradient(90deg,#4f7df3,#d946ef)",
+            background: "#0f172a",
             color: "#fff",
             border: "none",
             borderRadius: "8px",

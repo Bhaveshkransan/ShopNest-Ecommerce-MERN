@@ -129,7 +129,7 @@ const ProductDetails = () => {
                         disabled={!review.trim() || sentimentLoading}
                         style={{
                             marginTop: '10px',
-                            background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                            background: "#0f172a",
                             color: 'white',
                             border: 'none',
                             borderRadius: '25px',

@@ -216,7 +216,7 @@ const AddProduct = () => {
                   onClick={handleGenerateDescription}
                   disabled={aiLoading}
                   style={{
-                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                    background: "#0f172a",
                     color: "white",
                     border: "none",
                     borderRadius: "20px",

@@ -20,7 +20,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    background: #0f172a;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -40,7 +40,7 @@
     height: 240px;
     object-fit: cover;
     border-radius: 12px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: #0f172a;
     transition: transform 0.4s ease;
 }
 

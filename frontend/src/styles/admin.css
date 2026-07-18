@@ -107,19 +107,19 @@
 }
 
 .stat-card.blue {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: #0f172a;
 }
 
 .stat-card.purple {
-  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  background: #0f172a;
 }
 
 .stat-card.emerald {
-  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  background: #0f172a;
 }
 
 .stat-card.rose {
-  background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
+  background: #0f172a;
 }
 
 .stat-card h4 {
@@ -225,7 +225,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: #0f172a;
   color: white;
   border-radius: 8px;
   font-weight: 600;
@@ -361,7 +361,7 @@
 }
 
 .btn-form-submit {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background: #0f172a;
   color: white;
   border: none;
   flex: 1;
