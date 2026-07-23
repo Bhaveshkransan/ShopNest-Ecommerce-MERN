@@ -1,12 +1,18 @@
 # ShopNest - Full Stack MERN E-Commerce Web Application
 
-ShopNest is a premium, feature-rich E-Commerce web application built using the MERN stack (MongoDB, Express, React, Node.js). It integrates Redux Toolkit for state management, Cloudinary for media uploads, and Razorpay for payment processing, alongside a comprehensive Admin control panel.
+ShopNest is a premium, feature-rich E-Commerce web application built using the MERN stack (MongoDB, Express, React, Node.js). It features a sleek, high-end design and powerful AI integrations using the Google Gemini API. It integrates Redux Toolkit for state management, Cloudinary for media uploads, and Razorpay for payment processing, alongside a comprehensive Admin control panel.
 
 ---
 
 ## 🚀 Key Features
 
+### 🤖 AI-Powered Capabilities (Google Gemini API)
+- **AI Shopping Assistant Chatbot**: A fully integrated, conversational chatbot that helps users navigate the store, track orders, and get instant customer support.
+- **AI Product Description Generator**: Admin tool that automatically generates compelling, SEO-optimized product descriptions with a single click.
+- **AI Sentiment Analysis**: Automatically analyzes customer review sentiment (Positive, Neutral, Negative) to gauge customer satisfaction.
+
 ### 👤 Customer Features
+- **Premium UI/UX**: Elegant, high-end monochrome aesthetic featuring premium typography (Playfair Display & Outfit).
 - **User Authentication**: Register & Login with JWT session persistence (doesn't log out on page refreshes).
 - **Product Catalog**: Live search, featured categories, and rich detailed description views.
 - **Cart Management (Redux)**: Live cart updates, quantity increments/decrements, and localStorage caching.
@@ -26,9 +32,8 @@ ShopNest is a premium, feature-rich E-Commerce web application built using the M
 
 - **Frontend**: React (Vite), Redux Toolkit, Vanilla CSS, React Router DOM.
 - **Backend**: Node.js, Express.js, Multer (file parsing), Nodemailer (emails).
+- **AI & External APIs**: Google Gemini AI (`@google/genai`), Razorpay, Cloudinary.
 - **Database**: MongoDB (via Mongoose ODM).
-- **Cloud Storage**: Cloudinary (for product images).
-- **Payment Gateway**: Razorpay.
 
 ---
 
@@ -38,7 +43,7 @@ ShopNest is a premium, feature-rich E-Commerce web application built using the M
 ShopNest/
 ├── backend/
 │   ├── config/          # DB connection & Cloudinary configurations
-│   ├── controllers/     # API request handling controllers
+│   ├── controllers/     # API request & AI handling controllers
 │   ├── middleware/      # Auth & Admin route protections
 │   ├── model/           # MongoDB schemas
 │   ├── routes/          # API endpoint routes mapping
@@ -47,8 +52,8 @@ ShopNest/
 │   └── seed.js          # Database seeding script
 ├── frontend/
 │   ├── src/
-│   │   ├── admin/       # Admin Dashboard panels
-│   │   ├── components/  # Navbars, Footers, and Cards
+│   │   ├── admin/       # Admin Dashboard panels (Analytics, AI Generator)
+│   │   ├── components/  # Navbars, Footers, Cards, and AI Chatbot
 │   │   ├── context/     # Auth React Context
 │   │   ├── pages/       # Customer pages (Cart, Checkout, Profile, Home)
 │   │   ├── redux/       # Store & Cart slices
@@ -76,6 +81,9 @@ Create a `.env` file in the `backend/` folder and configure the following variab
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
+
+# Google Gemini AI Key
+GEMINI_API_KEY=your_google_gemini_api_key
 
 # Razorpay Test Credentials
 RAZORPAY_KEY_ID=your_razorpay_key_id
